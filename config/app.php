@@ -1,5 +1,7 @@
 <?php
 
+// Este archivo solo lo modificaremos a través de las variables de entorno. Aquí solamente modificaríamos la hora UTC
+
 return [
 
     /*

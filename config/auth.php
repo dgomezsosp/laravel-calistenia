@@ -1,5 +1,6 @@
 <?php
 
+// Si queremos crear diferentes usuarios que se puedan loguear.
 return [
 
     /*

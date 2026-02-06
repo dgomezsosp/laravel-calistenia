@@ -1,5 +1,6 @@
 <?php
 
+// Podemos usar diferentes bases de datos
 use Illuminate\Support\Str;
 
 return [
