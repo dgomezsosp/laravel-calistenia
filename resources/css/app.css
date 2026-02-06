@@ -9,3 +9,527 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+/* ========================================
+   ESTILOS GLOBALES Y RESET
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* background: radial-gradient(circle, hsl(229, 66%, 60%) 0%, hsl(229, 66%, 40%) 100%); */
+    background: radial-gradient(circle, hsl(198, 100%, 76%), hsl(200, 77%, 42%));
+    color: white;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+li,
+label,
+input,
+button {
+    font-family: "Nunito Sans", serif;
+    font-optical-sizing: auto;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+}
+
+img {
+    object-fit: cover;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* ========================================
+   HEADER COMPONENT
+   ======================================== */
+
+.header-component {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+    background: inherit;
+    filter: brightness(0.95);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* ========================================
+   TITLE COMPONENT
+   ======================================== */
+
+.title-component h2 {
+    font-size: 24px;
+    color: white;
+}
+
+
+/* ========================================
+   MENU COMPONENT
+   ======================================== */
+
+.menu-component svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+    cursor: pointer;
+}
+
+.menu-component svg:hover {
+    fill: rgba(255, 255, 255, 0.8);
+}
+
+
+/* ========================================
+   MAIN COMPONENT
+   ======================================== */
+
+.main-component {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    padding: 0px 20px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+
+/* ========================================
+   USERS TABLE COMPONENT
+   ======================================== */
+
+.users-table-component {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    border-radius: 10px;
+}
+
+/* Table Header */
+.table__header {
+    display: flex;
+    justify-content: flex-start;
+    background-color: hsl(198, 100%, 85%);
+    height: 30px;
+    border-radius: 5px;
+}
+
+.table__header-icon {
+    margin-left: 5px;
+}
+
+.table__header-icon svg,
+.edit-button svg,
+.delete-button svg {
+    width: 30px;
+    height: 30px;
+    fill: black;
+}
+
+.table__header-icon svg:hover,
+.edit-button svg:hover,
+.delete-button svg:hover {
+    fill: hsl(0, 0%, 25%);
+}
+
+/* Table Body */
+.table__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+    margin: 1rem auto;
+    min-height: 70vh;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+.table__body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table__body::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+
+.table__body::-webkit-scrollbar-thumb {
+    background: hsl(200, 77%, 42%);
+    border-radius: 10px;
+}
+
+.table__body::-webkit-scrollbar-thumb:hover {
+    background: hsl(200, 77%, 32%);
+}
+
+/* User Box */
+.table__body__user-box {
+    color: white;
+}
+
+.user-box__upper-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    background-color: hsl(198, 100%, 85%);
+    border-radius: 10px 10px 0 0;
+    padding: 5px 10px;
+}
+
+.user-box__data {
+    padding: 15px;
+    background-color: hsl(200, 77%, 36%);
+    border-radius: 0 0 10px 10px;
+}
+
+.user-box__data ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+.user-box__data ul li {
+    margin-top: 0.5rem;
+}
+
+.user-box__data ul li:first-child {
+    margin-top: 0;
+}
+
+.user-box__data ul li span {
+    font-weight: bold;
+}
+
+/* Table Footer */
+.table__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: hsl(198, 100%, 85%);
+    border-radius: 5px;
+}
+
+.table__footer-box {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-footer-info {
+    text-align: left;
+    color: rgb(0, 0, 0);
+}
+
+.table-footer-pagination {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.table-footer-pagination-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+.table-footer-pagination-button:hover {
+    background-color: #f3f4f6;
+}
+
+.table-footer-pagination-button.disabled {
+    cursor: not-allowed;
+}
+
+.table-footer-pagination-button.disabled:hover {
+    background-color: transparent;
+}
+
+.table-footer-pagination-button svg {
+    fill: hsl(200, 77%, 35%);
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: fill 0.2s ease;
+}
+
+.table-footer-pagination-button.disabled svg {
+    fill: rgb(85, 85, 85);
+}
+
+
+/* ========================================
+   USERS FORM COMPONENT
+   ======================================== */
+
+.users-form-component {
+    display: flex;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Form Header */
+.form__header-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: hsl(198, 100%, 85%);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.form__header-box-tabs {
+    display: flex;
+    color: white;
+    height: 30px;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.form__header-box-tabs button {
+    color: hsl(200, 77%, 35%);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    padding: 5px 15px;
+    transition: all 0.2s ease;
+}
+
+.form__header-box-tabs button.active {
+    background: hsl(200, 77%, 35%);
+    color: hsl(0, 0%, 100%);
+}
+
+.form__header-box-tabs button:hover:not(.active) {
+    background: hsl(200, 77%, 50%);
+    color: white;
+}
+
+.form__header-icons {
+    display: flex;
+    gap: 10px;
+    margin-right: 5px;
+}
+
+.clean-icon svg,
+.save-icon svg {
+    width: 30px;
+    height: 30px;
+    fill: black;
+}
+
+.clean-icon:hover svg,
+.save-icon:hover svg {
+    fill: hsl(0, 0%, 25%);
+}
+
+/* Validation Errors */
+.validation-errors {
+    display: none;
+}
+
+.validation-errors.active {
+    background-color: hsl(0, 51.90%, 54.30%);
+    border-radius: 5px;
+    display: block;
+    margin: 1rem 0;
+    padding: 1rem;
+    position: relative;
+}
+
+.close-validation-errors {
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+.close-validation-errors svg {
+    fill: hsl(100, 100%, 100%);
+    height: 2rem;
+    width: 2rem;
+}
+
+.validation-errors ul {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+.validation-errors ul li {
+    margin-top: 0.5rem;
+}
+
+/* Form Tabs */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Form Elements */
+.form-element {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0px;
+    margin: 10px 0;
+}
+
+.form-title {
+    border-bottom: solid 1px white;
+    color: white;
+    padding-bottom: 5px;
+}
+
+.form-element-input input,
+.form-element-input select,
+.form-element-input textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid hsl(200, 77%, 35%);
+    border-radius: 5px;
+    box-sizing: border-box;
+    background: white;
+    color: black;
+    font-family: "Nunito Sans", serif;
+    font-optical-sizing: auto;
+}
+
+.form-element-input select {
+    cursor: pointer;
+}
+
+.form-element-input textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-element.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-element-input input:focus,
+.form-element-input select:focus,
+.form-element-input textarea:focus {
+    outline: none;
+    border-color: hsl(200, 77%, 35%);
+    box-shadow: 0 0 0 3px hsla(200, 77%, 35%, 0.3);
+    background-color: hsl(200, 77%, 98%);
+}
+
+.form-element-input .error {
+    border: 1px solid hsl(0, 51.90%, 54.30%);
+}
+
+.form-element-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    grid-column: 1 / -1;
+}
+
+.form-element-group .form-element-input input {
+    width: 100%;
+}
+
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .main-component {
+        grid-template-columns: 1fr;
+    }
+
+    .tab-content.active {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-component {
+        padding: 15px;
+    }
+
+    .title-component h2 {
+        font-size: 18px;
+    }
+
+    .main-component {
+        padding: 0 15px;
+        margin-top: 20px;
+    }
+
+    .table__body {
+        width: 95%;
+    }
+}
