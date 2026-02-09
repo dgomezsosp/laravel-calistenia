@@ -7,9 +7,10 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="admin-panel.css">
         <!-- Styles / Scripts -->
         @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
             @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -19,316 +20,303 @@
             </style>
         @endif
     </head>
-    <body >
-        <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Panel de Administración</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin-panel.css">
-</head>
-<body>
-  
-  <!-- HEADER COMPONENT -->
-  <header class="header-component">
-    <div class="header-content">
-      <!-- TITLE COMPONENT -->
-      <div class="title-component">
-        <h2>PANEL DE ADMINISTRACIÓN guay</h2>
-      </div>
-      
-      <!-- MENU COMPONENT -->
-      <div class="menu-component">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <title>menu</title>
-          <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
-        </svg>
-      </div>
-    </div>
-  </header>
-
-  <!-- MAIN COMPONENT -->
-  <main class="main-component">
     
-    <!-- USERS TABLE COMPONENT -->
-    <section class="users-table-component">
-      <div class="table">
-        
-        <!-- Table Header -->
-        <div class="table__header">
-          <div class="table__header-box">
-            <button class="filter-button table__header-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <title>filter-check</title>
-                <path d="M12 12V19.88C12.04 20.18 11.94 20.5 11.71 20.71C11.32 21.1 10.69 21.1 10.3 20.71L8.29 18.7C8.06 18.47 7.96 18.16 8 17.87V12H7.97L2.21 4.62C1.87 4.19 1.95 3.56 2.38 3.22C2.57 3.08 2.78 3 3 3H17C17.22 3 17.43 3.08 17.62 3.22C18.05 3.56 18.13 4.19 17.79 4.62L12.03 12H12M17.75 21L15 18L16.16 16.84L17.75 18.43L21.34 14.84L22.5 16.25L17.75 21" />
-              </svg>
-            </button>
+    <body>
+      
+      <!-- HEADER COMPONENT -->
+      <header class="header-component">
+        <div class="header-content">
+          <!-- TITLE COMPONENT -->
+          <div class="title-component">
+            <h2>PANEL DE ADMINISTRACIÓN guay</h2>
           </div>
-        </div>
-
-        <!-- Table Body -->
-        <div class="table__body">
           
-          <!-- User Box 1 -->
-          <div class="table__body__user-box">
-            <div class="user-box__upper-row">
-              <button class="edit-button" data-id="1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>editar</title>
-                  <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                </svg>
-              </button>
-              <button class="delete-button" data-id="1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>eliminar</title>
-                  <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-                </svg>
-              </button>
-            </div>
-            <div class="user-box__data">
-              <ul>
-                <li><span>Nombre:</span> Juan Pérez García</li>
-                <li><span>Email:</span> juan.perez@example.com</li>
-                <li><span>Fecha de creación:</span> 2024-01-15 10:30:00</li>
-                <li><span>Fecha de actualización:</span> 2024-02-01 14:20:00</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- User Box 2 -->
-          <div class="table__body__user-box">
-            <div class="user-box__upper-row">
-              <button class="edit-button" data-id="2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>editar</title>
-                  <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                </svg>
-              </button>
-              <button class="delete-button" data-id="2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>eliminar</title>
-                  <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-                </svg>
-              </button>
-            </div>
-            <div class="user-box__data">
-              <ul>
-                <li><span>Nombre:</span> María López Martínez</li>
-                <li><span>Email:</span> maria.lopez@example.com</li>
-                <li><span>Fecha de creación:</span> 2024-01-20 09:15:00</li>
-                <li><span>Fecha de actualización:</span> 2024-01-28 16:45:00</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- User Box 3 -->
-          <div class="table__body__user-box">
-            <div class="user-box__upper-row">
-              <button class="edit-button" data-id="3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>editar</title>
-                  <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                </svg>
-              </button>
-              <button class="delete-button" data-id="3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>eliminar</title>
-                  <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-                </svg>
-              </button>
-            </div>
-            <div class="user-box__data">
-              <ul>
-                <li><span>Nombre:</span> Carlos Rodríguez Sánchez</li>
-                <li><span>Email:</span> carlos.rodriguez@example.com</li>
-                <li><span>Fecha de creación:</span> 2024-02-02 11:00:00</li>
-                <li><span>Fecha de actualización:</span> 2024-02-02 11:00:00</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- User Box 4 -->
-          <div class="table__body__user-box">
-            <div class="user-box__upper-row">
-              <button class="edit-button" data-id="4">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>editar</title>
-                  <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                </svg>
-              </button>
-              <button class="delete-button" data-id="4">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>eliminar</title>
-                  <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-                </svg>
-              </button>
-            </div>
-            <div class="user-box__data">
-              <ul>
-                <li><span>Nombre:</span> Ana Fernández Torres</li>
-                <li><span>Email:</span> ana.fernandez@example.com</li>
-                <li><span>Fecha de creación:</span> 2024-02-03 13:25:00</li>
-                <li><span>Fecha de actualización:</span> 2024-02-05 10:10:00</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- User Box 5 -->
-          <div class="table__body__user-box">
-            <div class="user-box__upper-row">
-              <button class="edit-button" data-id="5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>editar</title>
-                  <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                </svg>
-              </button>
-              <button class="delete-button" data-id="5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>eliminar</title>
-                  <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-                </svg>
-              </button>
-            </div>
-            <div class="user-box__data">
-              <ul>
-                <li><span>Nombre:</span> David González Ruiz</li>
-                <li><span>Email:</span> david.gonzalez@example.com</li>
-                <li><span>Fecha de creación:</span> 2024-02-04 08:50:00</li>
-                <li><span>Fecha de actualización:</span> 2024-02-04 08:50:00</li>
-              </ul>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Table Footer -->
-        <div class="table__footer">
-          <div class="table__footer-box">
-            <div class="table-footer-info">
-              <span>15 registro en total, mostrando 5 por página</span>
-            </div>
-            <div class="table-footer-pagination">
-              <div class="table-footer-pagination-button disabled" data-page="1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>chevron-double-left</title>
-                  <path d="M18.41,7.41L17,6L11,12L17,18L18.41,16.59L13.83,12L18.41,7.41M12.41,7.41L11,6L5,12L11,18L12.41,16.59L7.83,12L12.41,7.41Z" />
-                </svg>
-              </div>
-              <div class="table-footer-pagination-button disabled" data-page="1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>chevron-left</title>
-                  <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
-                </svg>
-              </div>
-              <div class="table-footer-pagination-button" data-page="2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>chevron-right</title>
-                  <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                </svg>
-              </div>
-              <div class="table-footer-pagination-button" data-page="3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>chevron-double-right</title>
-                  <path d="M5.59,7.41L7,6L13,12L7,18L5.59,16.59L10.17,12L5.59,7.41M11.59,7.41L13,6L19,12L13,18L11.59,16.59L16.17,12L11.59,7.41Z" />
-                </svg>
-              </div>
-            </div>
+          <!-- MENU COMPONENT -->
+          <div class="menu-component">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <title>menu</title>
+              <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+            </svg>
           </div>
         </div>
+      </header>
 
-      </div>
-    </section>
-
-    <!-- USERS FORM COMPONENT -->
-    <section class="users-form-component">
-      <div class="form">
+      <!-- MAIN COMPONENT -->
+      <main class="main-component">
         
-        <!-- Form Header -->
-        <div class="form__header">
-          <div class="form__header-box">
-            <div class="form__header-box-tabs">
-              <button class="tab active" data-tab="general">General</button>
-              <button class="tab" data-tab="images">Imagenes</button>
-            </div>
-            <div class="form__header-icons">
-              <button class="clean-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>eraser</title>
-                  <path d="M16.24,3.56L21.19,8.5C21.97,9.29 21.97,10.55 21.19,11.34L12,20.53C10.44,22.09 7.91,22.09 6.34,20.53L2.81,17C2.03,16.21 2.03,14.95 2.81,14.16L13.41,3.56C14.2,2.78 15.46,2.78 16.24,3.56M4.22,15.58L7.76,19.11C8.54,19.9 9.8,19.9 10.59,19.11L14.12,15.58L9.17,10.63L4.22,15.58Z" />
-                </svg>
-              </button>
-              <button class="save-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                  <title>content-save</title>
-                  <path d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Form Body -->
-        <div class="form__body">
-          
-          <!-- Validation Errors (hidden by default) -->
-          <div class="validation-errors">
-            <ul></ul>
-            <div class="close-validation-errors">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <title>close-circle-outline</title>
-                <path d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
-              </svg>
-            </div>
-          </div>
-
-          <form>
-            <input type="hidden" name="id">
+        <!-- USERS TABLE COMPONENT -->
+        <section class="users-table-component">
+          <div class="table">
             
-            <!-- Tab General -->
-            <div class="tab-content active" data-tab="general">
-              <div class="form-element">
-                <div class="form-title">
-                  <span>Nombre:</span>
+            <!-- Table Header -->
+            <div class="table__header">
+              <div class="table__header-box">
+                <button class="filter-button table__header-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>filter-check</title>
+                    <path d="M12 12V19.88C12.04 20.18 11.94 20.5 11.71 20.71C11.32 21.1 10.69 21.1 10.3 20.71L8.29 18.7C8.06 18.47 7.96 18.16 8 17.87V12H7.97L2.21 4.62C1.87 4.19 1.95 3.56 2.38 3.22C2.57 3.08 2.78 3 3 3H17C17.22 3 17.43 3.08 17.62 3.22C18.05 3.56 18.13 4.19 17.79 4.62L12.03 12H12M17.75 21L15 18L16.16 16.84L17.75 18.43L21.34 14.84L22.5 16.25L17.75 21" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Table Body -->
+            <div class="table__body">
+              
+              <!-- User Box 1 -->
+              <div class="table__body__user-box">
+                <div class="user-box__upper-row">
+                  <button class="edit-button" data-id="1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>editar</title>
+                      <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                    </svg>
+                  </button>
+                  <button class="delete-button" data-id="1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>eliminar</title>
+                      <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                    </svg>
+                  </button>
                 </div>
-                <div class="form-element-input">
-                  <input type="text" placeholder="Nombre" name="name">
+                <div class="user-box__data">
+                  <ul>
+                    <li><span>Nombre:</span> Juan Pérez García</li>
+                    <li><span>Email:</span> juan.perez@example.com</li>
+                    <li><span>Fecha de creación:</span> 2024-01-15 10:30:00</li>
+                    <li><span>Fecha de actualización:</span> 2024-02-01 14:20:00</li>
+                  </ul>
                 </div>
               </div>
-              <div class="form-element">
-                <div class="form-title">
-                  <span>Email:</span>
+
+              <!-- User Box 2 -->
+              <div class="table__body__user-box">
+                <div class="user-box__upper-row">
+                  <button class="edit-button" data-id="2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>editar</title>
+                      <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                    </svg>
+                  </button>
+                  <button class="delete-button" data-id="2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>eliminar</title>
+                      <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                    </svg>
+                  </button>
                 </div>
-                <div class="form-element-input">
-                  <input type="email" placeholder="Email" name="email">
+                <div class="user-box__data">
+                  <ul>
+                    <li><span>Nombre:</span> María López Martínez</li>
+                    <li><span>Email:</span> maria.lopez@example.com</li>
+                    <li><span>Fecha de creación:</span> 2024-01-20 09:15:00</li>
+                    <li><span>Fecha de actualización:</span> 2024-01-28 16:45:00</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- User Box 3 -->
+              <div class="table__body__user-box">
+                <div class="user-box__upper-row">
+                  <button class="edit-button" data-id="3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>editar</title>
+                      <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                    </svg>
+                  </button>
+                  <button class="delete-button" data-id="3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>eliminar</title>
+                      <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="user-box__data">
+                  <ul>
+                    <li><span>Nombre:</span> Carlos Rodríguez Sánchez</li>
+                    <li><span>Email:</span> carlos.rodriguez@example.com</li>
+                    <li><span>Fecha de creación:</span> 2024-02-02 11:00:00</li>
+                    <li><span>Fecha de actualización:</span> 2024-02-02 11:00:00</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- User Box 4 -->
+              <div class="table__body__user-box">
+                <div class="user-box__upper-row">
+                  <button class="edit-button" data-id="4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>editar</title>
+                      <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                    </svg>
+                  </button>
+                  <button class="delete-button" data-id="4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>eliminar</title>
+                      <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="user-box__data">
+                  <ul>
+                    <li><span>Nombre:</span> Ana Fernández Torres</li>
+                    <li><span>Email:</span> ana.fernandez@example.com</li>
+                    <li><span>Fecha de creación:</span> 2024-02-03 13:25:00</li>
+                    <li><span>Fecha de actualización:</span> 2024-02-05 10:10:00</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- User Box 5 -->
+              <div class="table__body__user-box">
+                <div class="user-box__upper-row">
+                  <button class="edit-button" data-id="5">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>editar</title>
+                      <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                    </svg>
+                  </button>
+                  <button class="delete-button" data-id="5">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>eliminar</title>
+                      <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                    </svg>
+                  </button>
+                </div>
+                <div class="user-box__data">
+                  <ul>
+                    <li><span>Nombre:</span> David González Ruiz</li>
+                    <li><span>Email:</span> david.gonzalez@example.com</li>
+                    <li><span>Fecha de creación:</span> 2024-02-04 08:50:00</li>
+                    <li><span>Fecha de actualización:</span> 2024-02-04 08:50:00</li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Table Footer -->
+            <div class="table__footer">
+              <div class="table__footer-box">
+                <div class="table-footer-info">
+                  <span>15 registro en total, mostrando 5 por página</span>
+                </div>
+                <div class="table-footer-pagination">
+                  <div class="table-footer-pagination-button disabled" data-page="1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>chevron-double-left</title>
+                      <path d="M18.41,7.41L17,6L11,12L17,18L18.41,16.59L13.83,12L18.41,7.41M12.41,7.41L11,6L5,12L11,18L12.41,16.59L7.83,12L12.41,7.41Z" />
+                    </svg>
+                  </div>
+                  <div class="table-footer-pagination-button disabled" data-page="1">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>chevron-left</title>
+                      <path d="M15.41,16.58L10.83,12L15.41,7.41L14,6L8,12L14,18L15.41,16.58Z" />
+                    </svg>
+                  </div>
+                  <div class="table-footer-pagination-button" data-page="2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>chevron-right</title>
+                      <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
+                    </svg>
+                  </div>
+                  <div class="table-footer-pagination-button" data-page="3">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>chevron-double-right</title>
+                      <path d="M5.59,7.41L7,6L13,12L7,18L5.59,16.59L10.17,12L5.59,7.41M11.59,7.41L13,6L19,12L13,18L11.59,16.59L16.17,12L11.59,7.41Z" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Tab Images -->
-            <div class="tab-content" data-tab="images">
-              <div class="form-element">
-                <div class="form-title">
-                  <span>Avatar:</span>
+          </div>
+        </section>
+
+        <!-- USERS FORM COMPONENT -->
+        <section class="users-form-component">
+          <div class="form">
+            
+            <!-- Form Header -->
+            <div class="form__header">
+              <div class="form__header-box">
+                <div class="form__header-box-tabs">
+                  <button class="tab active" data-tab="general">General</button>
+                  <button class="tab" data-tab="images">Imagenes</button>
                 </div>
-                <div class="form-element-input">
-                  <input type="file" name="avatar" accept="image/*">
+                <div class="form__header-icons">
+                  <button class="clean-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>eraser</title>
+                      <path d="M16.24,3.56L21.19,8.5C21.97,9.29 21.97,10.55 21.19,11.34L12,20.53C10.44,22.09 7.91,22.09 6.34,20.53L2.81,17C2.03,16.21 2.03,14.95 2.81,14.16L13.41,3.56C14.2,2.78 15.46,2.78 16.24,3.56M4.22,15.58L7.76,19.11C8.54,19.9 9.8,19.9 10.59,19.11L14.12,15.58L9.17,10.63L4.22,15.58Z" />
+                    </svg>
+                  </button>
+                  <button class="save-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>content-save</title>
+                      <path d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" />
+                    </svg>
+                  </button>
                 </div>
               </div>
             </div>
 
-          </form>
-        </div>
+            <!-- Form Body -->
+            <div class="form__body">
+              
+              <!-- Validation Errors (hidden by default) -->
+              <div class="validation-errors">
+                <ul></ul>
+                <div class="close-validation-errors">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>close-circle-outline</title>
+                    <path d="M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2C6.47,2 2,6.47 2,12C2,17.53 6.47,22 12,22C17.53,22 22,17.53 22,12C22,6.47 17.53,2 12,2M14.59,8L12,10.59L9.41,8L8,9.41L10.59,12L8,14.59L9.41,16L12,13.41L14.59,16L16,14.59L13.41,12L16,9.41L14.59,8Z" />
+                  </svg>
+                </div>
+              </div>
 
-      </div>
-    </section>
+              <form>
+                <input type="hidden" name="id">
+                
+                <!-- Tab General -->
+                <div class="tab-content active" data-tab="general">
+                  <div class="form-element">
+                    <div class="form-title">
+                      <span>Nombre:</span>
+                    </div>
+                    <div class="form-element-input">
+                      <input type="text" placeholder="Nombre" name="name">
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-title">
+                      <span>Email:</span>
+                    </div>
+                    <div class="form-element-input">
+                      <input type="email" placeholder="Email" name="email">
+                    </div>
+                  </div>
+                </div>
 
-  </main>
+                <!-- Tab Images -->
+                <div class="tab-content" data-tab="images">
+                  <div class="form-element">
+                    <div class="form-title">
+                      <span>Avatar:</span>
+                    </div>
+                    <div class="form-element-input">
+                      <input type="file" name="avatar" accept="image/*">
+                    </div>
+                  </div>
+                </div>
 
-</body>
-</html>
+              </form>
+            </div>
+
+          </div>
+        </section>
+
+      </main>
+
     </body>
 </html>
