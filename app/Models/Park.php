@@ -7,12 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\HasMany;
 
-class User extends Model
+class Park extends Model
 {
     use HasFactory;
     use SoftDeletes;
 
     protected $guarded =[];
     protected $dates = ['deleted_at'];
+
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class, 'park_material');
+    }
 }
 

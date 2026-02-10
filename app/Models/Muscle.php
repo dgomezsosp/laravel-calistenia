@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\HasMany;
 
-class User extends Model
+class Muscle extends Model
 {
     use HasFactory;
     use SoftDeletes;
