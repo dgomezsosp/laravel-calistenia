@@ -4,22 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Muscle;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\UserRequest;
+use App\Http\Requests\Admin\MuscleRequest;
 
-class UserController extends Controller
+class MuscleController extends Controller
 {
-  public function __construct(private User $user){}
+  public function __construct(private Muscle $muscle){}
  
   public function index()
   {
     try{
-      $records = $this->user
+      $records = $this->muscle
         ->orderBy('created_at', 'desc')
         ->paginate(10);
 
-      $view = View::make('admin.users.index')
+      $view = View::make('admin.muscles.index')
          ->with('records', $records);
 
       return $view;
@@ -43,19 +43,13 @@ class UserController extends Controller
     }
   }
 
-  public function store(UserRequest $request)
+  public function store(MuscleRequest $request)
   {  
     try{
 
      $data = $request->validated();
 
-      unset($data['password_confirmation']);
-     
-      if (!$request->filled('password') && $request->filled('id')){
-        unset($data['password']);
-      }
-
-      $this->user->updateOrCreate([
+      $this->muscle->updateOrCreate([
         'id' => $request->input('id')
       ], $data);
 
@@ -69,17 +63,17 @@ class UserController extends Controller
     }    
   }
 
-  public function edit(User $user)
+  public function edit(Muscle $muscle)
   {
     return response()->json([
-      'element' => $user,
+      'element' => $muscle,
     ], 200);
   }
 
-  public function destroy(User $user)
+  public function destroy(Muscle $muscle)
   {
     try{
-      $user->delete();
+      $muscle->delete();
      
       return response()->json([
         'message' =>  \Lang::get('admin/notification.deleted'),

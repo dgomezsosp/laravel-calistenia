@@ -10,10 +10,14 @@ return new class extends Migration
     {
         Schema::create('park_material', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('park_id')->constrained()->restrictOnDelete();
-            $table->foreignId('material_id')->constrained()->restrictOnDelete();
+            $table->integer('park_id');
+            $table->integer('material_id');
             $table->string('state');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index('park_id');
+            $table->index('material_id');
         });
     }
 

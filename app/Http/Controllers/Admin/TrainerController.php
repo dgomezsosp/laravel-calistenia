@@ -4,22 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Trainer;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\UserRequest;
+use App\Http\Requests\Admin\TrainerRequest;
 
-class UserController extends Controller
+class TrainerController extends Controller
 {
-  public function __construct(private User $user){}
+  public function __construct(private Trainer $trainer){}
  
   public function index()
   {
     try{
-      $records = $this->user
+      $records = $this->trainer
         ->orderBy('created_at', 'desc')
         ->paginate(10);
 
-      $view = View::make('admin.users.index')
+      $view = View::make('admin.trainers.index')
          ->with('records', $records);
 
       return $view;
@@ -43,7 +43,7 @@ class UserController extends Controller
     }
   }
 
-  public function store(UserRequest $request)
+  public function store(TrainerRequest $request)
   {  
     try{
 
@@ -55,7 +55,7 @@ class UserController extends Controller
         unset($data['password']);
       }
 
-      $this->user->updateOrCreate([
+      $this->trainer->updateOrCreate([
         'id' => $request->input('id')
       ], $data);
 
@@ -69,17 +69,17 @@ class UserController extends Controller
     }    
   }
 
-  public function edit(User $user)
+  public function edit(Trainer $trainer)
   {
     return response()->json([
-      'element' => $user,
+      'element' => $trainer,
     ], 200);
   }
 
-  public function destroy(User $user)
+  public function destroy(Trainer $trainer)
   {
     try{
-      $user->delete();
+      $trainer->delete();
      
       return response()->json([
         'message' =>  \Lang::get('admin/notification.deleted'),

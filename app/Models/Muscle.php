@@ -14,5 +14,10 @@ class Muscle extends Model
 
     protected $guarded =[];
     protected $dates = ['deleted_at'];
+
+    public function exercises()
+    {
+        return $this->belongsToMany(Exercise::class);
+    }
 }
 

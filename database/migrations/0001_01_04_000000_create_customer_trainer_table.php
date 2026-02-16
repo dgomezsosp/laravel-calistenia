@@ -8,16 +8,20 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('customer-trainer', function (Blueprint $table) {
+        Schema::create('customer_trainer', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('trainer_id')->constrained()->restrictOnDelete();
-            $table->foreignId('customer_id')->constrained()->restrictOnDelete();
+            $table->integer('trainer_id');
+            $table->integer('customer_id');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index('trainer_id');
+            $table->index('customer_id');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('customer_trainer');
     }
 };

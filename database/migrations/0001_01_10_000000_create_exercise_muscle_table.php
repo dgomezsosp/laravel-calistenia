@@ -10,9 +10,13 @@ return new class extends Migration
     {
         Schema::create('exercise_muscle', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('exercise_id')->constrained()->restrictOnDelete();
-            $table->foreignId('muscle_id')->constrained()->restrictOnDelete();
+            $table->integer('exercise_id');
+            $table->integer('muscle_id');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index('exercise_id');
+            $table->index('muscle_id');
         });
     }
 

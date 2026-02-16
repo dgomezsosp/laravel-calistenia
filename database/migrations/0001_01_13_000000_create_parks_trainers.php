@@ -13,6 +13,7 @@ return new class extends Migration
             $table->foreignId('park_id')->constrained()->restrictOnDelete();
             $table->foreignId('trainer_id')->constrained()->restrictOnDelete();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

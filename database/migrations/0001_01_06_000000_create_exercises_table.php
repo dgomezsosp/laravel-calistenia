@@ -11,8 +11,9 @@ return new class extends Migration
         Schema::create('exercises', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('level')
+            $table->string('level');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

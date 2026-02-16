@@ -17,7 +17,12 @@ class Trainer extends Model
 
     public function parks()
     {
-        return $this->belongsToMany(Park::class, 'park_trainer');
+        return $this->belongsToMany(Park::class);
+    }
+
+    public function customers()
+    {
+        return $this->belongsToMany(Customer::class);
     }
 }
 

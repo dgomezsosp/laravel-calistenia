@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\HasMany;
 
-class Customer extends Model
+class Material extends Model
 {
     use HasFactory;
     use SoftDeletes;
@@ -15,9 +15,9 @@ class Customer extends Model
     protected $guarded =[];
     protected $dates = ['deleted_at'];
 
-    public function trainers()
+    public function exercises()
     {
-        return $this->belongsToMany(Trainer::class);
+        return $this->belongsToMany(Exercise::class);
     }
 }
 

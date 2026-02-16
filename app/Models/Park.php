@@ -17,7 +17,12 @@ class Park extends Model
 
     public function materials()
     {
-        return $this->belongsToMany(Material::class, 'park_material');
+        return $this->belongsToMany(Material::class);
+    }
+
+    public function trainers()
+    {
+        return $this->belongsToMany(Trainer::class);
     }
 }
 

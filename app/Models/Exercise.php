@@ -17,12 +17,12 @@ class Exercise extends Model
 
     public function muscles()
     {
-        return $this->belongsToMany(Muscle::class, 'exercise_muscle');
+        return $this->belongsToMany(Muscle::class);
     }
 
     public function materials()
     {
-        return $this->belongsToMany(Material::class, 'exercise_material');
+        return $this->belongsToMany(Material::class);
     }
 }
 

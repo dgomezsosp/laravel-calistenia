@@ -4,22 +4,22 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\Park;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\UserRequest;
+use App\Http\Requests\Admin\ParkRequest;
 
-class UserController extends Controller
+class ParkController extends Controller
 {
-  public function __construct(private User $user){}
+  public function __construct(private Park $park){}
  
   public function index()
   {
     try{
-      $records = $this->user
+      $records = $this->park
         ->orderBy('created_at', 'desc')
         ->paginate(10);
 
-      $view = View::make('admin.users.index')
+      $view = View::make('admin.parks.index')
          ->with('records', $records);
 
       return $view;
@@ -43,19 +43,12 @@ class UserController extends Controller
     }
   }
 
-  public function store(UserRequest $request)
+  public function store(ParkRequest $request)
   {  
     try{
 
      $data = $request->validated();
-
-      unset($data['password_confirmation']);
-     
-      if (!$request->filled('password') && $request->filled('id')){
-        unset($data['password']);
-      }
-
-      $this->user->updateOrCreate([
+      $this->park->updateOrCreate([
         'id' => $request->input('id')
       ], $data);
 
@@ -69,17 +62,17 @@ class UserController extends Controller
     }    
   }
 
-  public function edit(User $user)
+  public function edit(Park $park)
   {
     return response()->json([
-      'element' => $user,
+      'element' => $park,
     ], 200);
   }
 
-  public function destroy(User $user)
+  public function destroy(Park $park)
   {
     try{
-      $user->delete();
+      $park->delete();
      
       return response()->json([
         'message' =>  \Lang::get('admin/notification.deleted'),

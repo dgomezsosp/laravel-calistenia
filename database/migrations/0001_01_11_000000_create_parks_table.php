@@ -14,13 +14,16 @@ return new class extends Migration
             $table->string('address');
             $table->string('latitude');
             $table->string('longitude');
-            $table->foreignId('locality_id')->constrained()->restrictOnDelete();
+            $table->integer('locality_id');
             $table->string('environment');
             $table->string('floor_type');
             $table->boolean('artificial_illumination');
             $table->boolean('shadow');
             $table->boolean('water_source');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->index('locality_id');
         });
     }
 
