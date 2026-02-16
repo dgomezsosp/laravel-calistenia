@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
@@ -21,13 +22,31 @@
     </head>
     
     <body>
+
+      {{-- MODAL CONFIRMAR DELETE --}}
+      <div class="modal-overlay">
+        <div class="modal-content">
+          <button class="close-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M19,3H16.3H7.7H5A2,2 0 0,0 3,5V7.7V16.4V19A2,2 0 0,0 5,21H7.7H16.4H19A2,2 0 0,0 21,19V16.3V7.7V5A2,2 0 0,0 19,3M15.6,17L12,13.4L8.4,17L7,15.6L10.6,12L7,8.4L8.4,7L12,10.6L15.6,7L17,8.4L13.4,12L17,15.6L15.6,17Z" />
+            </svg>
+          </button>
+          <div class="modal-text">
+            <span>¿Estás seguro de eliminar el registro?</span>
+          </div>
+          <div class="modal-buttons">
+            <button class="btn-confirm">Sí</button>
+            <button class="btn-cancel">No</button>
+          </div>
+        </div>
+      </div>
       
       <!-- HEADER COMPONENT -->
       <header class="header-component">
         <div class="header-content">
           <!-- TITLE COMPONENT -->
           <div class="title-component">
-            <h2>Panel de administración de {{ __('admin/titles.users') }}</h2>
+            <h2>Panel de administración de {{ __('admin/titles.materials') }}</h2>
           </div>
           
           <!-- MENU COMPONENT -->
@@ -50,7 +69,7 @@
             <!-- Table Header -->
             <div class="table__header">
               <div class="table__header-box">
-                <button class="filter-button table__header-btn">
+                <button class="filter-btn table__header-btn">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <title>filter-check</title>
                     <path d="M12 12V19.88C12.04 20.18 11.94 20.5 11.71 20.71C11.32 21.1 10.69 21.1 10.3 20.71L8.29 18.7C8.06 18.47 7.96 18.16 8 17.87V12H7.97L2.21 4.62C1.87 4.19 1.95 3.56 2.38 3.22C2.57 3.08 2.78 3 3 3H17C17.22 3 17.43 3.08 17.62 3.22C18.05 3.56 18.13 4.19 17.79 4.62L12.03 12H12M17.75 21L15 18L16.16 16.84L17.75 18.43L21.34 14.84L22.5 16.25L17.75 21" />
@@ -58,34 +77,37 @@
                 </button>
               </div>
             </div>
+
+             
+            
             <!-- Table Body -->
             <div class="table__body">
+            
               @foreach($records as $record)
-                <div class="table__body__user-box">
-                  <div class="user-box__upper-row">
-                    <button class="edit-button" data-endpoint="{{ route('users_edit', $record->id) }}">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <title>editar</title>
-                        <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
-                      </svg>
-                    </button>
-                    <button class="delete-button" data-endpoint="{{ route('users_destroy', $record->id) }}" data-id="5">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <title>eliminar</title>
-                        <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
-                      </svg>
-                    </button>
-                  </div>
-                  <div class="user-box__data">
-                    <ul>
-                      <li><span>Nombre:</span> {{ $record->name }}</li>
-                      <li><span>Email:</span> {{ $record->email }}</li>
-                      <li><span>Fecha de creación:</span> {{ $record->created_at }}</li>
-                      <li><span>Fecha de actualización:</span> {{ $record->updated_at }}</li>
-                    </ul>
-                  </div>
+              <div class="table__body__user-box">
+                <div class="user-box__upper-row">
+                  <button class="edit-button" data-endpoint="{{ route('materials_edit', $record->id) }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>editar</title>
+                      <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
+                    </svg>
+                  </button>
+                  <button class="delete-button" data-endpoint="{{ route('materials_destroy', $record->id) }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                      <title>eliminar</title>
+                      <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
+                    </svg>
+                  </button>
                 </div>
-              @endforeach
+                <div class="user-box__data">
+                  <ul>
+                    <li><span>Nombre:</span> {{ $record->name }}</li>
+                    <li><span>Fecha de creación:</span> {{ $record->created_at }}</li>
+                    <li><span>Fecha de actualización:</span> {{ $record->updated_at }}</li>
+                  </ul>
+                </div>
+              </div>
+            @endforeach
 
             </div>
 
@@ -144,7 +166,7 @@
                       <path d="M16.24,3.56L21.19,8.5C21.97,9.29 21.97,10.55 21.19,11.34L12,20.53C10.44,22.09 7.91,22.09 6.34,20.53L2.81,17C2.03,16.21 2.03,14.95 2.81,14.16L13.41,3.56C14.2,2.78 15.46,2.78 16.24,3.56M4.22,15.58L7.76,19.11C8.54,19.9 9.8,19.9 10.59,19.11L14.12,15.58L9.17,10.63L4.22,15.58Z" />
                     </svg>
                   </button>
-                  <button class="save-btn">
+                  <button class="save-btn" data-endpoint="{{ route('materials_store') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                       <title>content-save</title>
                       <path d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z" />
@@ -153,10 +175,8 @@
                 </div>
               </div>
             </div>
-
             <!-- Form Body -->
             <div class="form__body">
-              
               <!-- Validation Errors (hidden by default) -->
               <div class="validation-errors">
                 <ul></ul>
@@ -168,7 +188,7 @@
                 </div>
               </div>
 
-              <form action="{{ route('users_store') }}">
+              <form action="{{ route('materials_store') }}">
                 <input type="hidden" name="id">
                 
                 <!-- Tab General -->
@@ -181,36 +201,6 @@
                     </div>
                     <div class="form-element-input">
                       <input type="text" placeholder="Nombre" name="name" id="name">
-                    </div>
-                  </div>
-                  <div class="form-element">
-                    <div class="form-element-label">
-                      <label for="email">
-                        Email:
-                      </label>
-                    </div>
-                    <div class="form-element-input">
-                      <input type="email" placeholder="Email" name="email" id="email">
-                    </div>
-                  </div>
-                  <div class="form-element">
-                    <div class="form-element-label">
-                      <label for="password">
-                        Contraseña:
-                      </label>
-                    </div>
-                    <div class="form-element-input">
-                      <input type="password" placeholder="Contraseña" name="password" id="password">
-                    </div>
-                  </div>
-                  <div class="form-element">
-                    <div class="form-element-label">
-                      <label for="password_confirmation">
-                        Confirmar contraseña:
-                      </label>
-                    </div>
-                    <div class="form-element-input">
-                      <input type="password" placeholder="Confirmar contraseña" name="password_confirmation" id="password_confirmation">
                     </div>
                   </div>
                 </div>

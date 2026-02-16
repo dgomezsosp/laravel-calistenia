@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
@@ -27,7 +28,7 @@
         <div class="header-content">
           <!-- TITLE COMPONENT -->
           <div class="title-component">
-            <h2>Panel de administración de {{ __('admin/titles.users') }}</h2>
+            <h2>Panel de administración de {{ __('admin/titles.parks') }}</h2>
           </div>
           
           <!-- MENU COMPONENT -->
@@ -58,18 +59,22 @@
                 </button>
               </div>
             </div>
+
+             
+            
             <!-- Table Body -->
             <div class="table__body">
+            
               @foreach($records as $record)
                 <div class="table__body__user-box">
                   <div class="user-box__upper-row">
-                    <button class="edit-button" data-endpoint="{{ route('users_edit', $record->id) }}">
+                    <button class="edit-button" data-endpoint="{{ route('parks_edit', $record->id) }}">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <title>editar</title>
                         <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
                       </svg>
                     </button>
-                    <button class="delete-button" data-endpoint="{{ route('users_destroy', $record->id) }}" data-id="5">
+                    <button class="delete-button" data-endpoint="{{ route('parks_destroy', $record->id) }}">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <title>eliminar</title>
                         <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
@@ -79,7 +84,6 @@
                   <div class="user-box__data">
                     <ul>
                       <li><span>Nombre:</span> {{ $record->name }}</li>
-                      <li><span>Email:</span> {{ $record->email }}</li>
                       <li><span>Fecha de creación:</span> {{ $record->created_at }}</li>
                       <li><span>Fecha de actualización:</span> {{ $record->updated_at }}</li>
                     </ul>
@@ -129,7 +133,7 @@
 
         <!-- FORM COMPONENT -->
         <section class="form-component">
-          <div class="form">
+          <div class="form">          
             <!-- Form Header -->
             <div class="form__header">
               <div class="form__header-box">
@@ -156,7 +160,6 @@
 
             <!-- Form Body -->
             <div class="form__body">
-              
               <!-- Validation Errors (hidden by default) -->
               <div class="validation-errors">
                 <ul></ul>
@@ -167,10 +170,8 @@
                   </svg>
                 </div>
               </div>
-
-              <form action="{{ route('users_store') }}">
+              <form action="{{ route('parks_store') }}">
                 <input type="hidden" name="id">
-                
                 <!-- Tab General -->
                 <div class="tab-content active" data-tab="general">
                   <div class="form-element">
@@ -185,36 +186,118 @@
                   </div>
                   <div class="form-element">
                     <div class="form-element-label">
-                      <label for="email">
-                        Email:
+                      <label for="locality_id">
+                        Localidad:
                       </label>
                     </div>
                     <div class="form-element-input">
-                      <input type="email" placeholder="Email" name="email" id="email">
+                      <select name="locality_id" id="locality_id">
+                        <option value="localidad-1">Localidad 1</option>
+                        <option value="localidad-2">Localidad 2</option>
+                        <option value="localidad-3">Localidad 3</option>
+                      </select>
                     </div>
                   </div>
                   <div class="form-element">
                     <div class="form-element-label">
-                      <label for="password">
-                        Contraseña:
+                      <label for="address">
+                        Dirección:
                       </label>
                     </div>
                     <div class="form-element-input">
-                      <input type="password" placeholder="Contraseña" name="password" id="password">
+                      <input type="text" placeholder="Dirección" name="address" id="address">
                     </div>
                   </div>
                   <div class="form-element">
                     <div class="form-element-label">
-                      <label for="password_confirmation">
-                        Confirmar contraseña:
+                      <label for="latitude">
+                        Latitud:
                       </label>
                     </div>
                     <div class="form-element-input">
-                      <input type="password" placeholder="Confirmar contraseña" name="password_confirmation" id="password_confirmation">
+                      <input type="text" placeholder="Latitud" name="latitude" id="latitude">
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-element-label">
+                      <label for="longitude">
+                        Longitud:
+                      </label>
+                    </div>
+                    <div class="form-element-input">
+                      <input type="text" placeholder="Longitud" name="longitude" id="longitude">
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-element-label">
+                      <label for="environment">
+                        Entorno:
+                      </label>
+                    </div>
+                    <div class="form-element-input">
+                      <select name="environment" id="environment">
+                        <option value="urbano">Urbano</option>
+                        <option value="natural">Natural</option>
+                        <option value="playa">Playa</option>
+                        <option value="polideportivo">Polideportivo</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-element-label">
+                      <label for="floor_type">
+                        Tipo de suelo:
+                      </label>
+                    </div>
+                    <div class="form-element-input">
+                      <select name="floor_type" id="floor_type">
+                        <option value="arena">Arena</option>
+                        <option value="tierra">Tierra</option>
+                        <option value="cemento">Cemento</option>
+                        <option value="caucho">Caucho</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-element-label">
+                      <label for="artificial_illumination">
+                        Iluminación artificial:
+                      </label>
+                    </div>
+                    <div class="form-element-input">
+                      <select name="artificial_illumination" id="artificial_illumination">
+                        <option value="1">Sí</option>
+                        <option value="0">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-element-label">
+                      <label for="shadow">
+                        Sombra:
+                      </label>
+                    </div>
+                    <div class="form-element-input">
+                      <select name="shadow" id="shadow">
+                        <option value="1">Sí</option>
+                        <option value="0">No</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-element">
+                    <div class="form-element-label">
+                      <label for="water_source">
+                        Fuente de agua:
+                      </label>
+                    </div>
+                    <div class="form-element-input">
+                      <select name="water_source" id="water_source">
+                        <option value="1">Sí</option>
+                        <option value="0">No</option>
+                      </select>
                     </div>
                   </div>
                 </div>
-
                 <!-- Tab Images -->
                 <div class="tab-content" data-tab="images">
                   <div class="form-element">

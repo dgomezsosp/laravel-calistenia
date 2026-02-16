@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
@@ -27,7 +28,7 @@
         <div class="header-content">
           <!-- TITLE COMPONENT -->
           <div class="title-component">
-            <h2>Panel de administración de {{ __('admin/titles.users') }}</h2>
+            <h2>Panel de administración de {{ __('admin/titles.trainers') }}</h2>
           </div>
           
           <!-- MENU COMPONENT -->
@@ -43,7 +44,7 @@
       <!-- MAIN COMPONENT -->
       <main class="main-component">
         
-        <!-- TABLE COMPONENT -->
+        <!--TABLE COMPONENT -->
         <section class="table-component">
           <div class="table">
             
@@ -63,13 +64,13 @@
               @foreach($records as $record)
                 <div class="table__body__user-box">
                   <div class="user-box__upper-row">
-                    <button class="edit-button" data-endpoint="{{ route('users_edit', $record->id) }}">
+                    <button class="edit-button" data-endpoint="{{ route('trainers_edit', $record->id) }}">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <title>editar</title>
                         <path d="M20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18,2.9 17.35,2.9 16.96,3.29L15.12,5.12L18.87,8.87M3,17.25V21H6.75L17.81,9.93L14.06,6.18L3,17.25Z" />
                       </svg>
                     </button>
-                    <button class="delete-button" data-endpoint="{{ route('users_destroy', $record->id) }}" data-id="5">
+                    <button class="delete-button" data-endpoint="{{ route('trainers_destroy', $record->id) }}" data-id="5">
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <title>eliminar</title>
                         <path d="M19,4H15.5L14.5,3H9.5L8.5,4H5V6H19M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19Z" />
@@ -155,8 +156,7 @@
             </div>
 
             <!-- Form Body -->
-            <div class="form__body">
-              
+            <div class="form__body">           
               <!-- Validation Errors (hidden by default) -->
               <div class="validation-errors">
                 <ul></ul>
@@ -167,10 +167,8 @@
                   </svg>
                 </div>
               </div>
-
-              <form action="{{ route('users_store') }}">
+              <form action="{{ route('trainers_store') }}">
                 <input type="hidden" name="id">
-                
                 <!-- Tab General -->
                 <div class="tab-content active" data-tab="general">
                   <div class="form-element">
@@ -214,7 +212,6 @@
                     </div>
                   </div>
                 </div>
-
                 <!-- Tab Images -->
                 <div class="tab-content" data-tab="images">
                   <div class="form-element">
@@ -224,14 +221,12 @@
                       </label>
                     </div>
                     <div class="form-element-input">
-                      <input type="file" name="avatar" accept="image/*" id="avatar">
+                      <input type="file" name="avatar" accept="image/*">
                     </div>
                   </div>
                 </div>
-
               </form>
             </div>
-
           </div>
         </section>
 
