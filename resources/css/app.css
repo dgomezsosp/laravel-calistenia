@@ -22,7 +22,7 @@
 
 body {
     /* background: radial-gradient(circle, hsl(229, 66%, 60%) 0%, hsl(229, 66%, 40%) 100%); */
-    background: radial-gradient(circle, hsl(198, 100%, 76%), hsl(200, 77%, 42%));
+    background: radial-gradient(circle, hsl(290, 50%, 60%), hsl(285, 65%, 40%));
     color: white;
     margin: 0;
 }
@@ -140,7 +140,7 @@ ul {
    USERS TABLE COMPONENT
    ======================================== */
 
-.users-table-component {
+.table-component {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -158,16 +158,16 @@ ul {
 .table__header {
     display: flex;
     justify-content: flex-start;
-    background-color: hsl(198, 100%, 85%);
+    background-color: hsl(290, 61%, 85%);
     height: 30px;
     border-radius: 5px;
 }
 
-.table__header-icon {
+.table__header-btn {
     margin-left: 5px;
 }
 
-.table__header-icon svg,
+.table__header-btn svg,
 .edit-button svg,
 .delete-button svg {
     width: 30px;
@@ -175,7 +175,7 @@ ul {
     fill: black;
 }
 
-.table__header-icon svg:hover,
+.table__header-btn svg:hover,
 .edit-button svg:hover,
 .delete-button svg:hover {
     fill: hsl(0, 0%, 25%);
@@ -204,12 +204,12 @@ ul {
 }
 
 .table__body::-webkit-scrollbar-thumb {
-    background: hsl(200, 77%, 42%);
+    background-color: #651B7E;
     border-radius: 10px;
 }
 
 .table__body::-webkit-scrollbar-thumb:hover {
-    background: hsl(200, 77%, 32%);
+    background-color: hsl(285, 65%, 40%);
 }
 
 /* User Box */
@@ -222,14 +222,14 @@ ul {
     justify-content: flex-end;
     align-items: center;
     gap: 10px;
-    background-color: hsl(198, 100%, 85%);
+    background-color: hsl(290, 60%, 85%);
     border-radius: 10px 10px 0 0;
     padding: 5px 10px;
 }
 
 .user-box__data {
     padding: 15px;
-    background-color: hsl(200, 77%, 36%);
+    background-color: hsl(285, 65%, 30%);
     border-radius: 0 0 10px 10px;
 }
 
@@ -256,7 +256,7 @@ ul {
     justify-content: space-between;
     align-items: center;
     padding: 5px 10px;
-    background-color: hsl(198, 100%, 85%);
+    background-color: hsl(290, 60%, 85%);
     border-radius: 5px;
 }
 
@@ -299,7 +299,7 @@ ul {
 }
 
 .table-footer-pagination-button svg {
-    fill: hsl(200, 77%, 35%);
+    fill: hsl(285, 65%, 30%);
     width: 1.5rem;
     height: 1.5rem;
     transition: fill 0.2s ease;
@@ -314,7 +314,7 @@ ul {
    USERS FORM COMPONENT
    ======================================== */
 
-.users-form-component {
+.form-component {
     display: flex;
     flex-direction: column;
 }
@@ -330,7 +330,7 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: hsl(198, 100%, 85%);
+    background: #E8C2F0;
     border-radius: 5px;
     overflow: hidden;
 }
@@ -346,7 +346,7 @@ ul {
 }
 
 .form__header-box-tabs button {
-    color: hsl(200, 77%, 35%);
+    color: #651B7E;
     font-size: 16px;
     display: flex;
     align-items: center;
@@ -357,30 +357,30 @@ ul {
 }
 
 .form__header-box-tabs button.active {
-    background: hsl(200, 77%, 35%);
+    background: #651B7E;
     color: hsl(0, 0%, 100%);
 }
 
 .form__header-box-tabs button:hover:not(.active) {
-    background: hsl(200, 77%, 50%);
+    background: #651B7E;
     color: white;
 }
 
-.form__header-icons {
+.form__header-btns {
     display: flex;
     gap: 10px;
     margin-right: 5px;
 }
 
-.clean-icon svg,
-.save-icon svg {
+.clean-btn svg,
+.save-btn svg {
     width: 30px;
     height: 30px;
     fill: black;
 }
 
-.clean-icon:hover svg,
-.save-icon:hover svg {
+.clean-btn:hover svg,
+.save-btn:hover svg {
     fill: hsl(0, 0%, 25%);
 }
 
@@ -443,7 +443,7 @@ ul {
     margin: 10px 0;
 }
 
-.form-title {
+.form-element-label {
     border-bottom: solid 1px white;
     color: white;
     padding-bottom: 5px;
@@ -532,4 +532,117 @@ ul {
     .table__body {
         width: 95%;
     }
+}
+
+
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    z-index: 1000;
+    /* Asegura que esté por encima del resto */
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    color: black;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.close-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.close-button svg {
+    width: 100%;
+    height: 100%;
+    fill: #651B7E;
+    transition: fill 0.2s ease;
+}
+
+.close-button:hover svg {
+    fill: #651B7E;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    padding-right: 30px;
+    /* Espacio para el botón de cerrar */
+}
+
+.modal-text {
+    padding: 0.5rem;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    min-width: 60px;
+}
+
+.btn-confirm {
+    background-color: hsl(0, 65%, 50%);
+    color: white;
+}
+
+.btn-cancel {
+    background-color: hsl(0, 0%, 65%);
+    color: white;
+}
+
+.btn-confirm:hover {
+    background-color: hsl(0, 65%, 40%);
+}
+
+.btn-cancel:hover {
+    background-color: hsl(0, 0%, 45%);
 }
